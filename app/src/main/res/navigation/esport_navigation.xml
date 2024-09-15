@@ -8,16 +8,16 @@
     <fragment
         android:id="@+id/itemWhatWePlay"
         android:name="com.example.anmp_project.MainFragment"
-        android:label="fragment_main"
+        android:label="What We Play"
         tools:layout="@layout/fragment_main" />
     <fragment
         android:id="@+id/itemOurSchedule"
         android:name="com.example.anmp_project.OurScheduleFragment"
-        android:label="fragment_our_schedule"
+        android:label="Our Schedule"
         tools:layout="@layout/fragment_our_schedule" />
     <fragment
         android:id="@+id/itemWhoWeAre"
         android:name="com.example.anmp_project.WhoWeAreFragment"
-        android:label="fragment_who_we_are"
+        android:label="Who We Are"
         tools:layout="@layout/fragment_who_we_are" />
 </navigation>
