@@ -18,17 +18,17 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
+        setContentView(binding.root)
 
-        navController =
-            (supportFragmentManager.findFragmentById(R.id.hostFragment)
-                    as NavHostFragment).navController
-//        NavigationUI.setupActionBarWithNavController(this, navController)
+        navController = (supportFragmentManager.findFragmentById(R.id.hostFragment)
+                as NavHostFragment).navController
+        NavigationUI.setupActionBarWithNavController(this, navController, binding.drawerLayout)
+        NavigationUI.setupWithNavController(binding.navView, navController)
         binding.bottomNav.setupWithNavController(navController)
+
     }
     override fun onSupportNavigateUp(): Boolean {
-        return navController.navigateUp()
+        return NavigationUI.navigateUp(navController, binding.drawerLayout)
+                || super.onSupportNavigateUp()
     }
-
 }
