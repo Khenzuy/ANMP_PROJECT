@@ -9,7 +9,15 @@
         android:id="@+id/itemWhatWePlay"
         android:name="com.example.anmp_project.MainFragment"
         android:label="What We Play"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_itemWhatWePlay_to_achievementFragment"
+            app:destination="@id/achievementFragment">
+        </action>
+        <action
+            android:id="@+id/action_itemWhatWePlay_to_teamFragment"
+            app:destination="@id/teamFragment" />
+    </fragment>
     <fragment
         android:id="@+id/itemOurSchedule"
         android:name="com.example.anmp_project.OurScheduleFragment"
@@ -20,4 +28,28 @@
         android:name="com.example.anmp_project.WhoWeAreFragment"
         android:label="Who We Are"
         tools:layout="@layout/fragment_who_we_are" />
+    <fragment
+        android:id="@+id/achievementFragment"
+        android:name="com.example.anmp_project.AchievementFragment"
+        android:label="fragment_achievement"
+        tools:layout="@layout/fragment_achievement" >
+        <argument
+            android:name="image"
+            app:argType="integer" />
+        <argument
+            android:name="nameGame"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/teamFragment"
+        android:name="com.example.anmp_project.TeamFragment"
+        android:label="fragment_team"
+        tools:layout="@layout/fragment_team" >
+        <argument
+            android:name="image"
+            app:argType="integer" />
+        <argument
+            android:name="gameId"
+            app:argType="integer" />
+    </fragment>
 </navigation>

@@ -23,6 +23,7 @@ class WhoWeAreFragment : Fragment() {
         binding.btnLike.setOnClickListener {
             likeCount++
             binding.btnLike.text = "$likeCount"
+            //binding.btnLike.isEnabled = false kalo mau 1x klik disable
         }
     }
 }
