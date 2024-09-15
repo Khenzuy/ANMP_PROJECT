@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/esport_navigation"
+    app:startDestination="@id/itemWhatWePlay">
+
+    <fragment
+        android:id="@+id/itemWhatWePlay"
+        android:name="com.example.anmp_project.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" />
+    <fragment
+        android:id="@+id/itemOurSchedule"
+        android:name="com.example.anmp_project.OurScheduleFragment"
+        android:label="fragment_our_schedule"
+        tools:layout="@layout/fragment_our_schedule" />
+    <fragment
+        android:id="@+id/itemWhoWeAre"
+        android:name="com.example.anmp_project.WhoWeAreFragment"
+        android:label="fragment_who_we_are"
+        tools:layout="@layout/fragment_who_we_are" />
+</navigation>
