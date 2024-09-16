@@ -37,8 +37,8 @@
     <fragment
         android:id="@+id/itemAchievement"
         android:name="com.example.anmp_project.AchievementFragment"
-        android:label="fragment_achievement"
-        tools:layout="@layout/fragment_achievement" >
+        android:label="Achievement"
+        tools:layout="@layout/fragment_achievement">
         <argument
             android:name="image"
             app:argType="integer" />
@@ -49,8 +49,8 @@
     <fragment
         android:id="@+id/itemTeam"
         android:name="com.example.anmp_project.TeamFragment"
-        android:label="fragment_team"
-        tools:layout="@layout/fragment_team" >
+        android:label="Team Page"
+        tools:layout="@layout/fragment_team">
         <action
             android:id="@+id/action_itemTeam_to_itemTeamDetail"
             app:destination="@id/itemTeamDetail" />
@@ -58,6 +58,6 @@
     <fragment
         android:id="@+id/itemTeamDetail"
         android:name="com.example.anmp_project.TeamDetailFragment"
-        android:label="fragment_team_detail"
+        android:label="Team Detail"
         tools:layout="@layout/fragment_team_detail" />
 </navigation>
