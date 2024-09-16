@@ -23,14 +23,15 @@ class CompetitionAdapter(private val competitions: List<Competition>) :
         holder.binding.txtGame.text = competition.nameGame
         holder.binding.txtDescription.text = competition.description
         holder.binding.btnAchievement.setOnClickListener {
-            val action = MainFragmentDirections.actionItemWhatWePlayToAchievementFragment(
+            val action = MainFragmentDirections.actionItemWhatWePlayToItemAchievement(
                 competition.image,
                 competition.nameGame
             )
             holder.itemView.findNavController().navigate(action)
         }
         holder.binding.btnTeam.setOnClickListener {
-            //blm
+            val action = MainFragmentDirections.actionItemWhatWePlayToItemTeam()
+            holder.itemView.findNavController().navigate(action)
         }
     }
 

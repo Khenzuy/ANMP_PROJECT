@@ -11,12 +11,18 @@
         android:label="What We Play"
         tools:layout="@layout/fragment_main" >
         <action
-            android:id="@+id/action_itemWhatWePlay_to_achievementFragment"
-            app:destination="@id/achievementFragment">
+            android:id="@+id/action_itemWhatWePlay_to_itemAchievement"
+            app:destination="@id/itemAchievement">
         </action>
         <action
-            android:id="@+id/action_itemWhatWePlay_to_teamFragment"
-            app:destination="@id/teamFragment" />
+            android:id="@+id/action_itemWhatWePlay_to_itemTeam"
+            app:destination="@id/itemTeam" />
+        <action
+            android:id="@+id/action_itemWhatWePlay_to_itemOurSchedule"
+            app:destination="@id/itemOurSchedule" />
+        <action
+            android:id="@+id/action_itemWhatWePlay_to_itemWhoWeAre"
+            app:destination="@id/itemWhoWeAre" />
     </fragment>
     <fragment
         android:id="@+id/itemOurSchedule"
@@ -29,7 +35,7 @@
         android:label="Who We Are"
         tools:layout="@layout/fragment_who_we_are" />
     <fragment
-        android:id="@+id/achievementFragment"
+        android:id="@+id/itemAchievement"
         android:name="com.example.anmp_project.AchievementFragment"
         android:label="fragment_achievement"
         tools:layout="@layout/fragment_achievement" >
@@ -41,15 +47,17 @@
             app:argType="string" />
     </fragment>
     <fragment
-        android:id="@+id/teamFragment"
+        android:id="@+id/itemTeam"
         android:name="com.example.anmp_project.TeamFragment"
         android:label="fragment_team"
         tools:layout="@layout/fragment_team" >
-        <argument
-            android:name="image"
-            app:argType="integer" />
-        <argument
-            android:name="gameId"
-            app:argType="integer" />
+        <action
+            android:id="@+id/action_itemTeam_to_itemTeamDetail"
+            app:destination="@id/itemTeamDetail" />
     </fragment>
+    <fragment
+        android:id="@+id/itemTeamDetail"
+        android:name="com.example.anmp_project.TeamDetailFragment"
+        android:label="fragment_team_detail"
+        tools:layout="@layout/fragment_team_detail" />
 </navigation>
