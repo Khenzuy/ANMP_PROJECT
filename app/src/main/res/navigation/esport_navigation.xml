@@ -17,12 +17,6 @@
         <action
             android:id="@+id/action_itemWhatWePlay_to_itemTeam"
             app:destination="@id/itemTeam" />
-        <action
-            android:id="@+id/action_itemWhatWePlay_to_itemOurSchedule"
-            app:destination="@id/itemOurSchedule" />
-        <action
-            android:id="@+id/action_itemWhatWePlay_to_itemWhoWeAre"
-            app:destination="@id/itemWhoWeAre" />
     </fragment>
     <fragment
         android:id="@+id/itemOurSchedule"
