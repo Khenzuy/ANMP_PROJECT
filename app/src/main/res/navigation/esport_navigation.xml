@@ -18,11 +18,43 @@
             android:id="@+id/action_itemWhatWePlay_to_itemTeam"
             app:destination="@id/itemTeam" />
     </fragment>
+
     <fragment
         android:id="@+id/itemOurSchedule"
         android:name="com.example.anmp_project.OurScheduleFragment"
         android:label="Our Schedule"
-        tools:layout="@layout/fragment_our_schedule" />
+        tools:layout="@layout/fragment_our_schedule" >
+    <action
+        android:id="@+id/action_ourScheduleFragment_to_scheduleDetailFragment"
+        app:destination="@id/scheduleDetailFragment">
+        <argument
+            android:name="date"
+            app:argType="string" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="subtitle"
+            app:argType="string" />
+    </action>
+    </fragment>
+    <fragment
+        android:id="@+id/scheduleDetailFragment"
+        android:name="com.example.anmp_project.ScheduleDetailFragment"
+        android:label="Schedule Detail" >
+    <argument
+        android:name="date"
+        app:argType="string" />
+    <argument
+        android:name="title"
+        app:argType="string" />
+    <argument
+        android:name="subtitle"
+        app:argType="string" />
+    </fragment>
+
+
+
     <fragment
         android:id="@+id/itemWhoWeAre"
         android:name="com.example.anmp_project.WhoWeAreFragment"
