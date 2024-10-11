@@ -1,4 +1,4 @@
-package com.example.anmp_project
+package com.example.anmp_project.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,8 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
-import com.example.anmp_project.databinding.FragmentAchievementBinding
-import com.example.anmp_project.databinding.FragmentOurScheduleBinding
 import com.example.anmp_project.databinding.FragmentTeamBinding
 
 class TeamFragment : Fragment() {

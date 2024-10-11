@@ -1,14 +1,12 @@
-package com.example.anmp_project
+package com.example.anmp_project.view
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
+import com.example.anmp_project.R
 import com.example.anmp_project.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

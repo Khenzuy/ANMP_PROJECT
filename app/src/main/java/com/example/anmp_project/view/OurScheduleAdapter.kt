@@ -1,4 +1,4 @@
-package com.example.anmp_project
+package com.example.anmp_project.view
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -36,6 +36,7 @@ class ScheduleAdapter(private val schedules: List<Schedule>) :
     }
     override fun getItemCount(): Int = schedules.size
 }
+
 data class Schedule(
     val date: String,
     val title: String,
@@ -43,4 +44,3 @@ data class Schedule(
     val location: String,
     val description: String
 )
-

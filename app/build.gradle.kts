@@ -52,4 +52,12 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation(libs.kotlinStdlib)
+    implementation(libs.coroutinesCore)
+    implementation(libs.appcompat)
+    implementation(libs.swiperefreshlayout)
+    implementation(libs.picasso)
+    implementation(libs.volley)
+    implementation(libs.gson)
+
 }

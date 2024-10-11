@@ -1,4 +1,4 @@
-package com.example.anmp_project
+package com.example.anmp_project.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
