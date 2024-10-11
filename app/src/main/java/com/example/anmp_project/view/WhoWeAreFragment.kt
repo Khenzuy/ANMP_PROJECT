@@ -9,7 +9,8 @@ import com.example.anmp_project.databinding.FragmentWhoWeAreBinding
 
 class WhoWeAreFragment : Fragment() {
     private lateinit var binding: FragmentWhoWeAreBinding
-    var likeCount = 0
+    private var likeCount = 0
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -20,6 +21,8 @@ class WhoWeAreFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.txtTeamDescription.text = "Our e-sports team, Daffa Gaming, is renowned for its incredible teamwork and dedication to achieving the highest standards of gameplay. With a diverse roster of skilled players, we participate in multiple gaming titles, including Valorant, Mobile Legends, Call of Duty, Fortnite, Dota 2 and League of Legends. Our team emphasizes strategic collaboration and constant improvement, ensuring that each player develops their unique strengths."
         binding.btnLike.setOnClickListener {
             likeCount++
             binding.btnLike.text = "$likeCount"
