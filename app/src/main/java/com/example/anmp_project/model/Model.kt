@@ -6,13 +6,13 @@ data class Competition(
     val game_name: String,
     val game_short_name: String,
     val game_description: String,
-    val team_achievements: List<TeamAchievement>
+    val team_achievements: ArrayList<TeamAchievement>
 )
 
 data class TeamAchievement(
     val achievement: String,
-    val year: Int,
-    val team_name: String
+    val team_name: String,
+    val year: Int
 )
 
 //data class Schedule(
@@ -33,5 +33,5 @@ data class EventDate(
 
 data class EsportsData(
     val competitions: ArrayList<Competition>,
-//    val schedule: ArrayList<Schedule>
+//   val schedule: ArrayList<Schedule>
 )

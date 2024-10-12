@@ -30,9 +30,13 @@ class WhatWePlayAdapter(private val competitions: ArrayList<Competition>) :
         holder.binding.txtGame.text = competition.game_name
         holder.binding.txtDescription.text = competition.game_description
         holder.binding.btnAchievement.setOnClickListener {
+            val achievementsAsStrings = competition.team_achievements.map {
+                "${it.achievement};${it.team_name};${it.year}"
+            }.toTypedArray()
             val action = WhatWePlayFragmentDirections.actionItemWhatWePlayToItemAchievement(
                 competition.game_photo,
-                competition.game_name
+                competition.game_name,
+                achievementsAsStrings
             )
             holder.itemView.findNavController().navigate(action)
         }

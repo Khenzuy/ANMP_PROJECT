@@ -66,11 +66,14 @@
         android:label="Achievement"
         tools:layout="@layout/fragment_achievement">
         <argument
-            android:name="game_photo"
+            android:name="gamePhoto"
             app:argType="string" />
         <argument
-            android:name="game_name"
+            android:name="gameName"
             app:argType="string" />
+        <argument
+            android:name="teamAchievements"
+            app:argType="string[]" />
     </fragment>
     <fragment
         android:id="@+id/itemTeam"
