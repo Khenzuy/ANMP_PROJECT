@@ -1,106 +1,75 @@
 package com.example.anmp_project.view
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.anmp_project.R
-
+import com.example.anmp_project.model.Schedule
+import com.example.anmp_project.viewmodel.ScheduleViewModel
+import com.example.anmp_project.databinding.FragmentOurScheduleBinding
 
 class OurScheduleFragment : Fragment() {
 
-    private lateinit var recyclerView: RecyclerView
-    private lateinit var adapter: ScheduleAdapter
-    private lateinit var scheduleList: MutableList<Schedule>
+    private val scheduleViewModel: ScheduleViewModel by viewModels()
+    private lateinit var ourScheduleAdapter: OurScheduleAdapter
+    private var _binding: FragmentOurScheduleBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_our_schedule, container, false)
+    ): View {
+        _binding = FragmentOurScheduleBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-        recyclerView = view.findViewById(R.id.recyclerView)
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        ourScheduleAdapter = OurScheduleAdapter(emptyList()) { schedule -> navigateToScheduleDetail(schedule)
+        }
 
-        scheduleList = mutableListOf(
-            Schedule(
-                "05 SEP",
-                "Regional Qualifier - Valorant",
-                "Valorant - Team A",
-                "Los Angeles, CA",
-                "This high-stakes event will bring together top teams from across the region, all competing for a chance to advance to the national finals. Expect intense gameplay, strategic plays, and thrilling moments."
-            ),
-            Schedule(
-                "10 SEP",
-                "League of Legends Workshop",
-                "LOL - Team C",
-                "San Francisco, CA",
-                "Join us for an in-depth workshop on League of Legends strategies and team compositions, led by expert coaches and players."
-            ),
-            Schedule(
-                "07 OCT",
-                "Call of Duty Championship",
-                "COD - Team A",
-                "New York, NY",
-                "The ultimate Call of Duty Championship where top teams battle it out for the title. Watch intense matches and high-level gameplay."
-            ),
-            Schedule(
-                "11 NOV",
-                "Dota 2 Livestream",
-                "Dota 2 - Team B",
-                "Seattle, WA",
-                "Catch all the action live as Team B competes in an exciting Dota 2 tournament. Expect thrilling moments and epic plays."
-            ),
-            Schedule(
-                "04 DEC",
-                "Fortnite Invitational",
-                "Fortnite - Team A",
-                "Austin, TX",
-                "An invitation-only Fortnite event featuring top players and teams. Enjoy competitive gameplay and unique in-game events."
-            ),
-            Schedule(
-                "05 SEP",
-                "Regional Qualifier - Valorant",
-                "Valorant - Team A",
-                "Los Angeles, CA",
-                "This high-stakes event will bring together top teams from across the region, all competing for a chance to advance to the national finals. Expect intense gameplay, strategic plays, and thrilling moments."
-            ),
-            Schedule(
-                "10 SEP",
-                "League of Legends Workshop",
-                "LOL - Team C",
-                "San Francisco, CA",
-                "Join us for an in-depth workshop on League of Legends strategies and team compositions, led by expert coaches and players."
-            ),
-            Schedule(
-                "04 DEC",
-                "Fortnite Invitational",
-                "Fortnite - Team A",
-                "Austin, TX",
-                "An invitation-only Fortnite event featuring top players and teams. Enjoy competitive gameplay and unique in-game events."
-            ),
-            Schedule(
-                "05 SEP",
-                "Regional Qualifier - Valorant",
-                "Valorant - Team A",
-                "Los Angeles, CA",
-                "This high-stakes event will bring together top teams from across the region, all competing for a chance to advance to the national finals. Expect intense gameplay, strategic plays, and thrilling moments."
-            ),
-            Schedule(
-                "10 SEP",
-                "League of Legends Workshop",
-                "LOL - Team C",
-                "San Francisco, CA",
-                "Join us for an in-depth workshop on League of Legends strategies and team compositions, led by expert coaches and players."
-            )
-        )
+        binding.scheduleRecyclerView.layoutManager = LinearLayoutManager(context)
+        binding.scheduleRecyclerView.adapter = ourScheduleAdapter
 
-        adapter = ScheduleAdapter(scheduleList)
-        recyclerView.adapter = adapter
+        scheduleViewModel.schedules.observe(viewLifecycleOwner) { schedules ->
+            schedules?.let {
+                ourScheduleAdapter = OurScheduleAdapter(it) { schedule ->
+                    navigateToScheduleDetail(schedule)
+                }
+                binding.scheduleRecyclerView.adapter = ourScheduleAdapter
+                binding.progressLoad.visibility = View.GONE
+                binding.scheduleRecyclerView.visibility = View.VISIBLE
+            }
+        }
 
-        return view
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            binding.progressLoad.visibility = View.VISIBLE
+            binding.scheduleRecyclerView.visibility = View.GONE
+            scheduleViewModel.fetchSchedules()
+            binding.swipeRefreshLayout.isRefreshing = false
+        }
+        scheduleViewModel.fetchSchedules()
+    }
+
+    private fun navigateToScheduleDetail(schedule: Schedule) {
+        val bundle = Bundle().apply {
+            putString("event_name", schedule.event_name)
+            putString("esport_team", schedule.esport_team)
+            putString("event_description", schedule.event_description)
+            putString("image_url", schedule.event_photo)
+            putString("event location", schedule.venue)
+            putString("event_time", schedule.event_time)
+        }
+        findNavController().navigate(R.id.scheduleDetailFragment, bundle)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

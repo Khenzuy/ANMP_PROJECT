@@ -2,14 +2,12 @@ package com.example.anmp_project.view
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.anmp_project.databinding.ItemScheduleBinding
+import com.example.anmp_project.model.Schedule
 
-class ScheduleAdapter(private val schedules: List<Schedule>) :
-    RecyclerView.Adapter<ScheduleAdapter.ScheduleViewHolder>() {
-
-    class ScheduleViewHolder(val binding: ItemScheduleBinding) : RecyclerView.ViewHolder(binding.root)
+class OurScheduleAdapter(private val scheduleList: List<Schedule>, private val onItemClick: (Schedule) -> Unit
+) : RecyclerView.Adapter<OurScheduleAdapter.ScheduleViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ScheduleViewHolder {
         val binding = ItemScheduleBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -17,30 +15,19 @@ class ScheduleAdapter(private val schedules: List<Schedule>) :
     }
 
     override fun onBindViewHolder(holder: ScheduleViewHolder, position: Int) {
-        val schedule = schedules[position]
-        val dateParts = schedule.date.split(" ")
+        val schedule = scheduleList[position]
+        holder.bind(schedule)
+        holder.itemView.setOnClickListener { onItemClick(schedule) }
+    }
 
-        holder.binding.scheduleDate.text = dateParts[0]
-        holder.binding.scheduleMonth.text = dateParts[1]
-        holder.binding.scheduleTitle.text = schedule.title
-        holder.binding.scheduleSubtitle.text = schedule.subtitle
+    override fun getItemCount(): Int = scheduleList.size
 
-        holder.itemView.setOnClickListener {
-            val action = OurScheduleFragmentDirections.actionOurScheduleFragmentToScheduleDetailFragment(
-                date = schedule.date,
-                title = schedule.title,
-                subtitle = schedule.subtitle
-            )
-            holder.itemView.findNavController().navigate(action)
+    inner class ScheduleViewHolder(private val binding: ItemScheduleBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(schedule: Schedule) {
+            binding.scheduleDate.text = schedule.date.day.toString()
+            binding.scheduleMonth.text = schedule.date.month
+            binding.scheduleTitle.text = schedule.event_name
+            binding.scheduleSubtitle.text = schedule.esport_team
         }
     }
-    override fun getItemCount(): Int = schedules.size
 }
-
-data class Schedule(
-    val date: String,
-    val title: String,
-    val subtitle: String,
-    val location: String,
-    val description: String
-)

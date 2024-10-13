@@ -15,15 +15,15 @@ data class TeamAchievement(
     val year: Int
 )
 
-//data class Schedule(
-//    val date: EventDate,
-//    val event_name: String,
-//    val esport_team: String,
-//    val event_photo: String,
-//    val event_time: String,
-//    val venue: String,
-//    val event_description: String
-//)
+data class Schedule(
+    val date: EventDate,
+    val event_name: String,
+    val esport_team: String,
+    val event_photo: String,
+    val event_time: String,
+    val venue: String,
+    val event_description: String
+)
 
 data class EventDate(
     val day: Int,
