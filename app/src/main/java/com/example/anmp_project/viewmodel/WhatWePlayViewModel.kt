@@ -18,14 +18,14 @@ class WhatWePlayViewModel(application: Application) : AndroidViewModel(applicati
     val competitionLoadErrorLD = MutableLiveData<Boolean>()
     val loadingLD = MutableLiveData<Boolean>()
     private var queue: RequestQueue? = null
-    private val TAG = "volleyTag"
+    private val TAG = "competitionVolleyTag"
 
     fun refresh() {
         loadingLD.value = true
         competitionLoadErrorLD.value = false
         queue = Volley.newRequestQueue(getApplication())
 
-        val url = "https://www.jsonkeeper.com/b/ULD5"
+        val url = "https://www.jsonkeeper.com/b/59UF"
         val stringRequest = StringRequest(
             Request.Method.GET, url,
             { response ->
@@ -36,7 +36,6 @@ class WhatWePlayViewModel(application: Application) : AndroidViewModel(applicati
                 val result = Gson().fromJson<EsportsData>(response, competitionType)
 
                 competitionsLD.value = result.competitions
-
                 Log.d(TAG, result.competitions.toString())
             },
             { error ->

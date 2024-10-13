@@ -25,7 +25,7 @@ class ScheduleViewModel : ViewModel() {
     private suspend fun getSchedulesFromWebService(): List<Schedule> {
         return withContext(Dispatchers.IO) {
             try {
-                val url = "https://www.jsonkeeper.com/b/ULD5"
+                val url = "https://www.jsonkeeper.com/b/902I"
                 val response = URL(url).readText()
                 val scheduleList = mutableListOf<Schedule>()
                 val jsonObject = JSONObject(response)
