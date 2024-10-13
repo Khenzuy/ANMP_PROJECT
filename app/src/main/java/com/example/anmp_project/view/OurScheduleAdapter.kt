@@ -25,7 +25,7 @@ class OurScheduleAdapter(private val scheduleList: List<Schedule>, private val o
     inner class ScheduleViewHolder(private val binding: ItemScheduleBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(schedule: Schedule) {
             binding.scheduleDate.text = schedule.date.day.toString()
-            binding.scheduleMonth.text = schedule.date.month
+            binding.scheduleMonth.text = schedule.date.month.substring(0, 3)
             binding.scheduleTitle.text = schedule.event_name
             binding.scheduleSubtitle.text = schedule.esport_team
         }

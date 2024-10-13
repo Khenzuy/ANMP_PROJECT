@@ -20,8 +20,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
+                android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/scheduleImageView"
@@ -29,61 +28,69 @@
                     android:layout_height="200dp"
                     android:scaleType="centerCrop" />
 
-                <TextView
-                    android:id="@+id/scheduleTitleTextView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Event Title"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/black" />
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:orientation="horizontal">
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
                     <TextView
-                        android:id="@+id/locationTextView"
-                        android:layout_width="0dp"
+                        android:id="@+id/scheduleTitleTextView"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Event Location" />
+                        android:layout_marginTop="8dp"
+                        android:text="Event Title"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/locationTextView"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Event Location" />
+
+                        <TextView
+                            android:id="@+id/eventTimeTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:text="Event Time" />
+                    </LinearLayout>
 
                     <TextView
-                        android:id="@+id/eventTimeTextView"
+                        android:id="@+id/teamNameTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Team Name"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/scheduleDescriptionTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Event Description"
+                        android:textColor="@color/black" />
+
+                    <Button
+                        android:id="@+id/notifyButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:text="Event Time" />
+                        android:layout_marginTop="16dp"
+                        android:backgroundTint="@color/colorAccent"
+                        android:text="Notify Me"
+                        android:textColor="@android:color/white" />
                 </LinearLayout>
 
-                <TextView
-                    android:id="@+id/teamNameTextView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="Team Name"
-                    android:textColor="@color/black" />
-
-                <TextView
-                    android:id="@+id/scheduleDescriptionTextView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Event Description"
-                    android:textColor="@color/black" />
-
-                <Button
-                    android:id="@+id/notifyButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:backgroundTint="@color/colorAccent"
-                    android:text="Notify Me"
-                    android:textColor="@android:color/white" />
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>

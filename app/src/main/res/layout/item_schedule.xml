@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:text="05"
             android:textColor="@android:color/black"
-            android:textSize="24sp"
+            android:textSize="28sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/scheduleMonth"
             app:layout_constraintEnd_toStartOf="@+id/scheduleTitle"
@@ -30,12 +30,13 @@
         <TextView
             android:id="@+id/scheduleMonth"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="22dp"
+            android:layout_marginStart="2dp"
             android:text="SEP"
             android:textColor="@android:color/darker_gray"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/scheduleTitle"
+            app:layout_constraintEnd_toStartOf="@+id/scheduleSubtitle"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/scheduleDate" />
 
