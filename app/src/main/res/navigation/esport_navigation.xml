@@ -83,10 +83,20 @@
         <action
             android:id="@+id/action_itemTeam_to_itemTeamDetail"
             app:destination="@id/itemTeamDetail" />
+        <argument
+            android:name="gamePhoto"
+            app:argType="string" />
+        <argument
+            android:name="gameName"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/itemTeamDetail"
         android:name="com.example.anmp_project.view.TeamDetailFragment"
         android:label="Team Detail"
-        tools:layout="@layout/fragment_team_detail" />
+        tools:layout="@layout/fragment_team_detail" >
+        <argument
+            android:name="teamName"
+            app:argType="string" />
+    </fragment>
 </navigation>

@@ -42,7 +42,10 @@ class WhatWePlayAdapter(private val competitions: ArrayList<Competition>) :
         }
 
         holder.binding.btnTeam.setOnClickListener {
-            val action = WhatWePlayFragmentDirections.actionItemWhatWePlayToItemTeam()
+            val action = WhatWePlayFragmentDirections.actionItemWhatWePlayToItemTeam(
+                competition.game_photo,
+                competition.game_name
+            )
             holder.itemView.findNavController().navigate(action)
         }
     }

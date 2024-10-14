@@ -35,3 +35,13 @@ data class EsportsData(
     val competitions: ArrayList<Competition>,
 //   val schedule: ArrayList<Schedule>
 )
+
+data class TeamDetail(
+    val player_role: String,
+    val player_name: String,
+    val player_image: String
+)
+
+data class TeamData(
+    val team_name: String
+)

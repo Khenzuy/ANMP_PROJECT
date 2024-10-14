@@ -63,5 +63,5 @@ dependencies {
     implementation(libs.picasso)
     implementation(libs.volley)
     implementation(libs.gson)
-
+    implementation("com.squareup.picasso:picasso:2.71828")
 }
