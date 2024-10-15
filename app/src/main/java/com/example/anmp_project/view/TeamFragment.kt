@@ -40,7 +40,7 @@ class TeamFragment : Fragment() {
         val teamRecyclerView: RecyclerView = binding.teamRecyclerView
 
         teams = fetchTeamsBasedOnGameName(gameName)
-        teamAdapter = TeamAdapter(teams)
+        teamAdapter = TeamAdapter(teams, gamePhoto ?: "")
         teamRecyclerView.layoutManager = LinearLayoutManager(context)
         teamRecyclerView.adapter = teamAdapter
     }

@@ -98,5 +98,8 @@
         <argument
             android:name="teamName"
             app:argType="string" />
+        <argument
+            android:name="gamePhoto"
+            app:argType="string" />
     </fragment>
 </navigation>

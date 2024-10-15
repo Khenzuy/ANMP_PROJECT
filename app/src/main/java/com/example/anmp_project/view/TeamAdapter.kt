@@ -9,7 +9,7 @@ import com.example.anmp_project.model.TeamData
 
 
 
-class TeamAdapter(private val teamList: List<TeamData>) : RecyclerView.Adapter<TeamAdapter.TeamViewHolder>() {
+class TeamAdapter(private val teamList: List<TeamData>,private val gamePhoto: String) : RecyclerView.Adapter<TeamAdapter.TeamViewHolder>() {
 
     class TeamViewHolder(val binding: ItemTeamBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -23,7 +23,7 @@ class TeamAdapter(private val teamList: List<TeamData>) : RecyclerView.Adapter<T
         holder.binding.txtTeam.text = team.team_name
 
         holder.itemView.setOnClickListener {
-            val action = TeamFragmentDirections.actionItemTeamToItemTeamDetail(team.team_name)
+            val action = TeamFragmentDirections.actionItemTeamToItemTeamDetail(team.team_name, gamePhoto)
             it.findNavController().navigate(action)
         }
     }
