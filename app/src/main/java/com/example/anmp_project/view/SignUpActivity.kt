@@ -67,7 +67,11 @@ class SignUpActivity : AppCompatActivity() {
                 userDatabase.userDao().insertAll(newUser)
 
                 runOnUiThread {
-                    Toast.makeText(this@SignUpActivity, "User Registered Successfully", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this@SignUpActivity,
+                        "User Registered Successfully",
+                        Toast.LENGTH_SHORT
+                    ).show()
                     val intent = Intent(this@SignUpActivity, SignInActivity::class.java)
                     startActivity(intent)
                     finish()
