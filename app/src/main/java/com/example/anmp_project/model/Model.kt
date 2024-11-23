@@ -1,5 +1,26 @@
 package com.example.anmp_project.model
 
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "users")
+data class User(
+    @ColumnInfo(name = "first_name")
+    var firstName:String,
+    @ColumnInfo(name = "last_name")
+    var lastName:String,
+    @ColumnInfo(name = "username")
+    var username:String,
+
+    @ColumnInfo(name = "password")
+    var password:String
+){
+    @PrimaryKey(autoGenerate = true)
+    var id:Int = 0
+}
+
+
 data class Competition(
     val id: Int,
     val game_photo: String,
