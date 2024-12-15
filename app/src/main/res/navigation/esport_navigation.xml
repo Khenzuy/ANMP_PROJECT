@@ -102,4 +102,22 @@
             android:name="gamePhoto"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/applyTeamListFragment"
+        android:name="com.example.anmp_project.view.ApplyTeamListFragment"
+        android:label="fragment_apply_team_list"
+        tools:layout="@layout/fragment_apply_team_list" >
+        <action
+            android:id="@+id/action_applyTeamListFragment_to_applyTeamSubmitFragment"
+            app:destination="@id/applyTeamSubmitFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/applyTeamSubmitFragment"
+        android:name="com.example.anmp_project.view.ApplyTeamSubmitFragment"
+        android:label="fragment_apply_team_submit"
+        tools:layout="@layout/fragment_apply_team_submit" >
+        <action
+            android:id="@+id/action_applyTeamSubmitFragment_to_applyTeamListFragment"
+            app:destination="@id/applyTeamListFragment" />
+    </fragment>
 </navigation>

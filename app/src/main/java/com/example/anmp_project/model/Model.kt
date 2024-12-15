@@ -20,6 +20,21 @@ data class User(
     var id:Int = 0
 }
 
+@Entity(tableName = "apply")
+data class Apply(
+    @ColumnInfo(name = "game")
+    var game:String,
+    @ColumnInfo(name = "team")
+    var team:String,
+    @ColumnInfo(name = "description")
+    var description:String,
+    @ColumnInfo(name = "status")
+    var status: String = "WAITING"
+){
+    @PrimaryKey(autoGenerate = true)
+    var id:Int = 0
+}
+
 
 data class Competition(
     val id: Int,
