@@ -19,11 +19,13 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.io.IOException
 
-@Database(entities = [User::class, Competition::class, Achievement::class], version = 1)
+@Database(entities = [User::class, Competition::class, Achievement::class, Proposal::class, Team::class], version = 1)
 abstract class EsportsDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
     abstract fun competitionDao(): CompetitionDao
     abstract fun achievementDao(): AchievementDao
+    abstract fun proposalDao(): ProposalDao
+    abstract fun teamDao(): TeamDao
 
     companion object {
         @Volatile
@@ -50,7 +52,7 @@ abstract class EsportsDatabase : RoomDatabase() {
             override fun onCreate(db: SupportSQLiteDatabase) {
                 super.onCreate(db)
                 INSTANCE?.let { database ->
-                    scope.launch(Dispatchers.IO) { // Ensure this runs on a background thread
+                    scope.launch(Dispatchers.IO) {
                         populateDatabase(database, context)
                     }
                 }
@@ -82,6 +84,29 @@ abstract class EsportsDatabase : RoomDatabase() {
                     )
                     database.achievementDao().insertAchievement(newAchievement)
                 }
+
+                val teamsForCompetitions = listOf(
+                    Team(teamName = "Valorant Team A", competitionId = 1),
+                    Team(teamName = "Valorant Team B", competitionId = 1),
+                    Team(teamName = "Valorant Team C", competitionId = 1),
+                    Team(teamName = "Mobile Legends Team A", competitionId = 2),
+                    Team(teamName = "Mobile Legends Team B", competitionId = 2),
+                    Team(teamName = "Mobile Legends Team C", competitionId = 2),
+                    Team(teamName = "League of Legends Team A", competitionId = 3),
+                    Team(teamName = "League of Legends Team B", competitionId = 3),
+                    Team(teamName = "League of Legends Team C", competitionId = 3),
+                    Team(teamName = "Call of Duty Team A", competitionId = 4),
+                    Team(teamName = "Call of Duty Team B", competitionId = 4),
+                    Team(teamName = "Call of Duty Team C", competitionId = 4),
+                    Team(teamName = "DOTA 2 Team A", competitionId = 5),
+                    Team(teamName = "DOTA 2 Team B", competitionId = 5),
+                    Team(teamName = "DOTA 2 Team C", competitionId = 5),
+                    Team(teamName = "Fortnite Team A", competitionId = 6),
+                    Team(teamName = "Fortnite Team B", competitionId = 6),
+                    Team(teamName = "Fortnite Team C", competitionId = 6)
+                )
+
+                database.teamDao().insertAll(teamsForCompetitions)
             }
         }
 

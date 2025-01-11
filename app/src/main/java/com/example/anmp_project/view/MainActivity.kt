@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.navView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
-                R.id.nav_home -> {
+                R.id.nav_apply_team -> {
                     navController.navigate(R.id.applyTeamListFragment)
                     true
                 }

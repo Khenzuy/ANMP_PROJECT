@@ -39,6 +39,15 @@ data class Achievement(
     val competitionId: Int
 )
 
+@Entity(tableName = "teams")
+data class Team(
+    @PrimaryKey(autoGenerate = true)
+    val id: Int = 0,
+    val teamName: String,
+    val competitionId: Int
+)
+
+
 @Entity(tableName = "users")
 data class User(
     @PrimaryKey(autoGenerate = true)
@@ -67,8 +76,8 @@ data class User(
 )
 
 
-@Entity(tableName = "applies")
-data class Apply(
+@Entity(tableName = "proposal")
+data class Proposal(
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0,
 
@@ -82,8 +91,12 @@ data class Apply(
     var description: String,
 
     @ColumnInfo(name = "status")
-    var status: String = "WAITING"
+    var status: String = "WAITING",
+
+    @ColumnInfo(name = "username")
+    var username: String
 )
+
 
 data class TeamAchievement(
     @SerializedName("achievement")

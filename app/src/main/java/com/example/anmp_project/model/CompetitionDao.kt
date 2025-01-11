@@ -8,6 +8,9 @@ interface CompetitionDao {
     @Query("SELECT * FROM competitions")
     fun getAllCompetitionsLiveData(): LiveData<List<Competition>>
 
+    @Query("SELECT * FROM competitions")
+    fun getAllCompetitions(): List<Competition>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertCompetition(competition: Competition)
 
