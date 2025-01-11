@@ -4,19 +4,29 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.anmp_project.model.EsportsDatabase
 import com.example.anmp_project.model.User
-import com.example.anmp_project.model.UserDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class SignUpViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val userDao = UserDatabase.buildDatabase(application).userDao()
+    private val userDao = EsportsDatabase.getDatabase(application, viewModelScope).userDao()
 
     val userRegistrationStatus = MutableLiveData<String>()
 
-    fun registerUser(firstName: String, lastName: String, username: String, password: String, repeatPassword: String) {
-        if (firstName.isEmpty() || lastName.isEmpty() || username.isEmpty() || password.isEmpty() || repeatPassword.isEmpty()) {
+    fun registerUser(
+        firstName: String,
+        lastName: String,
+        username: String,
+        password: String,
+        repeatPassword: String,
+        profileImageUrl: String,
+        teamDescription: String
+    ) {
+        if (firstName.isEmpty() || lastName.isEmpty() || username.isEmpty() || password.isEmpty() ||
+            repeatPassword.isEmpty() || profileImageUrl.isEmpty() || teamDescription.isEmpty()
+        ) {
             userRegistrationStatus.postValue("Please fill all fields")
             return
         }
@@ -32,7 +42,14 @@ class SignUpViewModel(application: Application) : AndroidViewModel(application) 
             if (existingUser != null) {
                 userRegistrationStatus.postValue("Username already exists")
             } else {
-                val newUser = User(firstName, lastName, username, password)
+                val newUser = User(
+                    firstName = firstName,
+                    lastName = lastName,
+                    username = username,
+                    password = password,
+                    profileImage = profileImageUrl,
+                    teamDescription = teamDescription
+                )
                 userDao.insertAll(newUser)
 
                 userRegistrationStatus.postValue("User Registered Successfully")

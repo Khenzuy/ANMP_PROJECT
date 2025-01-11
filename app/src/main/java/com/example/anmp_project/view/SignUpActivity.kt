@@ -42,8 +42,18 @@ class SignUpActivity : AppCompatActivity() {
             val username = binding.etUsername.text.toString().trim()
             val password = binding.etPassword.text.toString().trim()
             val repeatPassword = binding.etRepeatPassword.text.toString().trim()
+            val profileImageUrl = binding.etProfileImageUrl.text.toString().trim()
+            val teamDescription = binding.etTeamDescription.text.toString().trim()
 
-            signUpViewModel.registerUser(firstName, lastName, username, password, repeatPassword)
+            signUpViewModel.registerUser(
+                firstName,
+                lastName,
+                username,
+                password,
+                repeatPassword,
+                profileImageUrl,
+                teamDescription
+            )
         }
 
         binding.btnBack.setOnClickListener {

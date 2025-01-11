@@ -1,0 +1,148 @@
+{
+  "competitions": [
+    {
+      "id": 1,
+      "game_photo": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news/c6c50b680c5e1846a9c77f86d5aa357d46584ffe-1920x1080.png?auto=format&fit=fill&q=80&w=1480",
+      "game_name": "Valorant",
+      "game_short_name": "Valorant",
+      "game_description": "Valorant is a tactical first-person shooter from Riot Games that combines precise gunplay with unique character abilities. Players engage in strategic, team-based matches where they must complete objectives and outsmart opponents to win.",
+      "team_achievements": [
+        {
+          "achievement": "Champions of the regional Valorant Showdown",
+          "year": 2023,
+          "team_name": "Team A"
+        },
+        {
+          "achievement": "Runner-up of Valorant Global Championship",
+          "year": 2022,
+          "team_name": "Team B"
+        },
+        {
+          "achievement": "Semifinalists at Valorant Masters Tournament",
+          "year": 2021,
+          "team_name": "Team C"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "game_photo": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEibVsEo6u0xjBh1YhuFPjrXsJO_YfxR0ZO1oJDxFbYvfyRVv0C91g_ZA73LHtajejDjQLjfNJ5FpEqLDh9UQqbqeGzEbOUhrbnujojIW0Hrzs1TtqAfeQa9rWhqziVwJUQlIZHnF1g4TyxZ/s1066/logo-mobile-legend.jpg",
+      "game_name": "Mobile Legends",
+      "game_short_name": "ML",
+      "game_description": "Mobile Legends is a popular multiplayer online battle arena (MOBA) game where players control unique heroes to engage in strategic 5v5 battles.",
+      "team_achievements": [
+        {
+          "achievement": "Champions of the National Mobile Legends Tournament",
+          "year": 2023,
+          "team_name": "Team A"
+        },
+        {
+          "achievement": "Runner-up of the Southeast Asia Mobile Legends Championship",
+          "year": 2022,
+          "team_name": "Team B"
+        },
+        {
+          "achievement": "Semifinalists at the Global Mobile Legends Cup",
+          "year": 2021,
+          "team_name": "Team C"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "game_photo": "https://pentagram-production.imgix.net/cc7fa9e7-bf44-4438-a132-6df2b9664660/EMO_LOL_01.jpg",
+      "game_name": "League of Legends",
+      "game_short_name": "LOL",
+      "game_description": "League of Legends is a multiplayer online battle arena (MOBA) where teams of powerful champions, each with unique abilities, battle to control strategic areas and destroy the enemy's base.",
+      "team_achievements": [
+        {
+          "achievement": "Champions of the National League of Legends Tournament",
+          "year": 2023,
+          "team_name": "Team A"
+        },
+        {
+          "achievement": "Semifinalists at the Global League of Legends Championship",
+          "year": 2022,
+          "team_name": "Team B"
+        },
+        {
+          "achievement": "Finalists of the League of Legends Invitational",
+          "year": 2021,
+          "team_name": "Team C"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "game_photo": "https://wallpapers.com/images/high/call-of-duty-mobile-logo-black-background-slr1ytq3vlpgjek2.webp",
+      "game_name": "Call of Duty",
+      "game_short_name": "COD",
+      "game_description": "Call of Duty is a first-person shooter franchise where players engage in fast-paced combat across a variety of game modes, focusing on tactical teamwork and sharp reflexes.",
+      "team_achievements": [
+        {
+          "achievement": "Champions of the International Call of Duty Tournament",
+          "year": 2023,
+          "team_name": "Team A"
+        },
+        {
+          "achievement": "Runner-up at the National Call of Duty Championship",
+          "year": 2022,
+          "team_name": "Team B"
+        },
+        {
+          "achievement": "Semifinalists of the Global Call of Duty Masters",
+          "year": 2021,
+          "team_name": "Team C"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "game_photo": "https://c4.wallpaperflare.com/wallpaper/303/2/464/dota-2-logo-wallpaper-preview.jpg",
+      "game_name": "Dota 2",
+      "game_short_name": "Dota 2",
+      "game_description": "Dota 2 is a competitive online battle arena where two teams of five players each compete to destroy the other's base, requiring strategy and teamwork.",
+      "team_achievements": [
+        {
+          "achievement": "Champions of the Dota 2 Invitational",
+          "year": 2023,
+          "team_name": "Team A"
+        },
+        {
+          "achievement": "Runner-up at the Dota 2 Global Series",
+          "year": 2022,
+          "team_name": "Team B"
+        },
+        {
+          "achievement": "Finalists of the International Dota 2 Cup",
+          "year": 2021,
+          "team_name": "Team C"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "game_photo": "https://wallpapers.com/images/hd/cool-fortnite-logo-154uiun82bkt8fjw.jpg",
+      "game_name": "Fortnite",
+      "game_short_name": "Fortnite",
+      "game_description": "Fortnite is a battle royale game where players fight to be the last one standing while building structures to defend against opponents.",
+      "team_achievements": [
+        {
+          "achievement": "Champions of the Fortnite Showdown",
+          "year": 2023,
+          "team_name": "Team A"
+        },
+        {
+          "achievement": "Runner-up at the Global Fortnite Championship",
+          "year": 2022,
+          "team_name": "Team B"
+        },
+        {
+          "achievement": "Semifinalists at the National Fortnite Tournament",
+          "year": 2021,
+          "team_name": "Team C"
+        }
+      ]
+    }
+  ]
+}

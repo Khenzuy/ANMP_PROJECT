@@ -22,35 +22,29 @@ class WhatWePlayAdapter(private val competitions: ArrayList<Competition>) :
         val competition = competitions[position]
 
         Picasso.get()
-            .load(competition.game_photo)
+            .load(competition.gamePhoto)
             .placeholder(android.R.drawable.ic_menu_gallery)
             .error(android.R.drawable.ic_menu_close_clear_cancel)
             .into(holder.binding.competitionImage)
 
-        holder.binding.txtGame.text = competition.game_name
-        holder.binding.txtDescription.text = competition.game_description
-        holder.binding.btnAchievement.setOnClickListener {
-            val achievementsAsStrings = competition.team_achievements.map {
-                "${it.achievement};${it.team_name};${it.year}"
-            }.toTypedArray()
-            val action = WhatWePlayFragmentDirections.actionItemWhatWePlayToItemAchievement(
-                competition.game_photo,
-                competition.game_name,
-                achievementsAsStrings
-            )
-            holder.itemView.findNavController().navigate(action)
-        }
+        holder.binding.txtGame.text = competition.gameName
+        holder.binding.txtDescription.text = competition.gameDescription
 
-        holder.binding.btnTeam.setOnClickListener {
-            val action = WhatWePlayFragmentDirections.actionItemWhatWePlayToItemTeam(
-                competition.game_photo,
-                competition.game_name
-            )
-            holder.itemView.findNavController().navigate(action)
-        }
+        // Assuming the navigation actions are correctly set up in nav_graph.xml
+//        holder.binding.btnAchievement.setOnClickListener {
+//            // This part of code needs proper setup in the navigation graph and argument handling
+//            val action = WhatWePlayFragmentDirections.actionItemWhatWePlayToItemAchievement(competition.id)
+//            holder.itemView.findNavController().navigate(action)
+//        }
+//
+//        holder.binding.btnTeam.setOnClickListener {
+//            // This part of code needs proper setup in the navigation graph and argument handling
+//            val action = WhatWePlayFragmentDirections.actionItemWhatWePlayToItemTeam(competition.id)
+//            holder.itemView.findNavController().navigate(action)
+//        }
     }
 
-    fun updateCompetitionList(newCompetitionList: ArrayList<Competition>) {
+    fun updateCompetitionList(newCompetitionList: List<Competition>) {
         competitions.clear()
         competitions.addAll(newCompetitionList)
         notifyDataSetChanged()

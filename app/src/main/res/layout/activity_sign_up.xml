@@ -83,16 +83,42 @@
       app:layout_constraintEnd_toEndOf="@id/et_password"
       android:paddingStart="8dp"
       android:paddingEnd="8dp" />
+  <EditText
+      android:id="@+id/et_profile_image_url"
+      android:layout_width="0dp"
+      android:layout_height="48dp"
+      android:hint="Profile Image URL"
+      android:layout_marginTop="8dp"
+      app:layout_constraintTop_toBottomOf="@id/et_repeat_password"
+      app:layout_constraintStart_toStartOf="@id/et_repeat_password"
+      app:layout_constraintEnd_toEndOf="@id/et_repeat_password"
+      android:paddingStart="8dp"
+      android:paddingEnd="8dp" />
+
+  <EditText
+      android:id="@+id/et_team_description"
+      android:layout_width="0dp"
+      android:layout_height="100dp"
+      android:hint="Team Description"
+      android:layout_marginTop="8dp"
+      app:layout_constraintTop_toBottomOf="@id/et_profile_image_url"
+      app:layout_constraintStart_toStartOf="@id/et_profile_image_url"
+      app:layout_constraintEnd_toEndOf="@id/et_profile_image_url"
+      android:paddingStart="8dp"
+      android:paddingEnd="8dp"
+      android:gravity="top"
+      android:inputType="textMultiLine" />
 
   <CheckBox
       android:id="@+id/cb_terms"
       android:layout_width="wrap_content"
       android:layout_height="48dp"
-      android:text="I agree with terms and conditions"
+      android:layout_marginStart="24dp"
       android:layout_marginTop="16dp"
-      app:layout_constraintTop_toBottomOf="@id/et_repeat_password"
-      app:layout_constraintStart_toStartOf="@id/et_repeat_password"
-      android:padding="8dp" />
+      android:padding="8dp"
+      android:text="I agree with terms and conditions"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/et_team_description" />
 
   <Button
       android:id="@+id/btnBack"

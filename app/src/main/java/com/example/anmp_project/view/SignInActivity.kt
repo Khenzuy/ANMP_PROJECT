@@ -6,8 +6,10 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.anmp_project.databinding.ActivitySignInBinding
-import com.example.anmp_project.model.UserDatabase
+import com.example.anmp_project.model.EsportsDatabase
 import com.example.anmp_project.viewmodel.SignInViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.CoroutineScope
 
 class SignInActivity : AppCompatActivity() {
 
@@ -22,7 +24,8 @@ class SignInActivity : AppCompatActivity() {
 
         sharedPreferences = getSharedPreferences("UserSession", MODE_PRIVATE)
 
-        val userDao = UserDatabase.buildDatabase(this).userDao()
+        // Using EsportsDatabase to get the userDao
+        val userDao = EsportsDatabase.getDatabase(this, CoroutineScope(Dispatchers.Main)).userDao()
         signInViewModel = SignInViewModel(userDao)
 
         if (sharedPreferences.getBoolean("isLoggedIn", false)) {
@@ -49,6 +52,8 @@ class SignInActivity : AppCompatActivity() {
                 saveSession(signInViewModel.user.value?.username ?: "")
                 Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
                 navigateToMainActivity()
+            } else {
+                Toast.makeText(this, "Login Failed", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -66,6 +71,7 @@ class SignInActivity : AppCompatActivity() {
         editor.putBoolean("isLoggedIn", true)
         editor.apply()
     }
+
 
     private fun navigateToMainActivity() {
         val intent = Intent(this, MainActivity::class.java)

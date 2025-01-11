@@ -1,83 +1,154 @@
 package com.example.anmp_project.model
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.room.*
+import com.google.gson.annotations.SerializedName
+
+@Entity(tableName = "competitions")
+data class Competition(
+    @PrimaryKey @ColumnInfo(name = "id")
+    val id: Int,
+
+    @ColumnInfo(name = "game_photo")
+    val gamePhoto: String,
+
+    @ColumnInfo(name = "game_name")
+    val gameName: String,
+
+    @ColumnInfo(name = "game_short_name")
+    val gameShortName: String,
+
+    @ColumnInfo(name = "game_description")
+    val gameDescription: String
+)
+
+@Entity(tableName = "achievements")
+data class Achievement(
+    @PrimaryKey(autoGenerate = true)
+    val id: Int = 0,
+
+    @ColumnInfo(name = "achievement")
+    val achievement: String,
+
+    @ColumnInfo(name = "team_name")
+    val teamName: String,
+
+    @ColumnInfo(name = "year")
+    val year: Int,
+
+    @ColumnInfo(name = "competition_id")
+    val competitionId: Int
+)
 
 @Entity(tableName = "users")
 data class User(
+    @PrimaryKey(autoGenerate = true)
+    var id: Int = 0,
+
     @ColumnInfo(name = "first_name")
     var firstName:String,
+
     @ColumnInfo(name = "last_name")
     var lastName:String,
+
     @ColumnInfo(name = "username")
     var username:String,
 
     @ColumnInfo(name = "password")
-    var password:String
-){
-    @PrimaryKey(autoGenerate = true)
-    var id:Int = 0
-}
+    var password:String,
 
-@Entity(tableName = "apply")
+    @ColumnInfo(name = "profile_image")
+    var profileImage: String,
+
+    @ColumnInfo(name = "team_description")
+    var teamDescription: String,
+
+    @ColumnInfo(name = "like_count")
+    var likeCount: Int = 0
+)
+
+
+@Entity(tableName = "applies")
 data class Apply(
+    @PrimaryKey(autoGenerate = true)
+    var id: Int = 0,
+
     @ColumnInfo(name = "game")
-    var game:String,
+    var game: String,
+
     @ColumnInfo(name = "team")
-    var team:String,
+    var team: String,
+
     @ColumnInfo(name = "description")
-    var description:String,
+    var description: String,
+
     @ColumnInfo(name = "status")
     var status: String = "WAITING"
-){
-    @PrimaryKey(autoGenerate = true)
-    var id:Int = 0
-}
-
-
-data class Competition(
-    val id: Int,
-    val game_photo: String,
-    val game_name: String,
-    val game_short_name: String,
-    val game_description: String,
-    val team_achievements: ArrayList<TeamAchievement>
 )
 
 data class TeamAchievement(
+    @SerializedName("achievement")
     val achievement: String,
-    val team_name: String,
+
+    @SerializedName("team_name")
+    val teamName: String,
+
+    @SerializedName("year")
     val year: Int
+)
+data class CompetitionsWrapper(
+    val competitions: List<CompetitionJson>
+)
+
+data class CompetitionJson(
+    @SerializedName("id")
+    val id: Int,
+
+    @SerializedName("game_photo")
+    val gamePhoto: String,
+
+    @SerializedName("game_name")
+    val gameName: String,
+
+    @SerializedName("game_short_name")
+    val gameShortName: String,
+
+    @SerializedName("game_description")
+    val gameDescription: String,
+
+    @SerializedName("team_achievements")
+    val teamAchievements: List<TeamAchievement>
 )
 
 data class Schedule(
+    @Embedded
     val date: EventDate,
-    val event_name: String,
-    val esport_team: String,
-    val event_photo: String,
-    val event_time: String,
+
+    @ColumnInfo(name = "event_name")
+    val eventName: String,
+
+    @ColumnInfo(name = "esport_team")
+    val esportTeam: String,
+
+    @ColumnInfo(name = "event_photo")
+    val eventPhoto: String,
+
+    @ColumnInfo(name = "event_time")
+    val eventTime: String,
+
+    @ColumnInfo(name = "venue")
     val venue: String,
-    val event_description: String
+
+    @ColumnInfo(name = "event_description")
+    val eventDescription: String
 )
 
 data class EventDate(
+    @ColumnInfo(name = "day")
     val day: Int,
+
+    @ColumnInfo(name = "month")
     val month: String,
+
+    @ColumnInfo(name = "year")
     val year: Int
-)
-
-data class EsportsData(
-    val competitions: ArrayList<Competition>,
-//   val schedule: ArrayList<Schedule>
-)
-
-data class TeamDetail(
-    val player_role: String,
-    val player_name: String,
-    val player_image: String
-)
-
-data class TeamData(
-    val team_name: String
 )

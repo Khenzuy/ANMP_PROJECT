@@ -14,8 +14,11 @@ import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.example.anmp_project.R
 import com.example.anmp_project.databinding.ActivityMainBinding
+import com.example.anmp_project.model.EsportsDatabase
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,6 +31,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // Initialize the database
+        initializeDatabase()
 
         sharedPreferences = getSharedPreferences("UserSession", MODE_PRIVATE)
 
@@ -62,6 +68,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun initializeDatabase() {
+        val scope = CoroutineScope(Dispatchers.IO)
+        EsportsDatabase.getDatabase(this, scope) // Triggers database initialization
+    }
+
     private fun logout() {
         val editor = sharedPreferences.edit()
         editor.clear()
@@ -76,12 +87,11 @@ class MainActivity : AppCompatActivity() {
         if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
             binding.drawerLayout.closeDrawer(GravityCompat.START)
         } else {
-            onBackPressedDispatcher.onBackPressed()
+            super.onBackPressed()
         }
     }
 
     override fun onSupportNavigateUp(): Boolean {
         return NavigationUI.navigateUp(navController, appBarConfiguration) || super.onSupportNavigateUp()
     }
-
 }
