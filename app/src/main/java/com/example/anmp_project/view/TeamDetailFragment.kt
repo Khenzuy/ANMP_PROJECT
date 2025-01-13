@@ -54,7 +54,8 @@ class TeamDetailFragment : Fragment() {
     private fun setupViewModel(teamName: String) {
         viewModel = ViewModelProvider(this).get(TeamDetailViewModel::class.java)
         viewModel.getMembersByTeamName(teamName)
-        viewModel.members.observe(viewLifecycleOwner) { teams ->
+        viewModel.members.observe(viewLifecycleOwner) { members ->
+            teamDetailAdapter.updateData(members)
         }
     }
 }
