@@ -19,7 +19,9 @@ class ApplyTeamListFragment : Fragment() {
     private lateinit var binding: FragmentApplyTeamListBinding
     private lateinit var viewModel: ApplyTeamListViewModel
     private lateinit var applyTeamListAdapter: ApplyTeamListAdapter
-
+    private fun getUsernameFromPreferences(): String {
+        return requireContext().getSharedPreferences("UserSession", Context.MODE_PRIVATE).getString("username", "") ?: ""
+    }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentApplyTeamListBinding.inflate(inflater, container, false)
         return binding.root
@@ -37,23 +39,24 @@ class ApplyTeamListFragment : Fragment() {
         }
 
         viewModel.proposals.observe(viewLifecycleOwner) { proposals ->
-            if (proposals != null && proposals.isNotEmpty()) {
+            if (proposals.isNotEmpty()) {
                 applyTeamListAdapter.updateProposals(proposals)
+                binding.noDataTextView.visibility = View.GONE
+            } else {
+                binding.noDataTextView.visibility = View.VISIBLE
             }
         }
-
-        viewModel.refresh(getUsernameFromPreferences())
 
         binding.floatingActionButton.setOnClickListener {
             navigateToSubmitFragment()
         }
-    }
 
-    private fun getUsernameFromPreferences(): String {
-        return requireContext().getSharedPreferences("UserSession", Context.MODE_PRIVATE).getString("username", "") ?: ""
+        viewModel.refresh(getUsernameFromPreferences())
     }
 
     private fun navigateToSubmitFragment() {
+        viewModel.refresh(getUsernameFromPreferences())
         findNavController().navigate(R.id.action_applyTeamListFragment_to_applyTeamSubmitFragment)
     }
 }
+

@@ -108,7 +108,7 @@
     <fragment
         android:id="@+id/applyTeamListFragment"
         android:name="com.example.anmp_project.view.ApplyTeamListFragment"
-        android:label="fragment_apply_team_list"
+        android:label="Apply Team"
         tools:layout="@layout/fragment_apply_team_list" >
         <action
             android:id="@+id/action_applyTeamListFragment_to_applyTeamSubmitFragment"
