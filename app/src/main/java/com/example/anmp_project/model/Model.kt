@@ -38,8 +38,8 @@ data class Achievement(
     @ColumnInfo(name = "competition_id")
     val competitionId: Int
 )
-
-@Entity(tableName = "teams")
+//kombinasi teamName,competition Id harus unique
+@Entity(tableName = "teams", indices = [Index(value = ["teamName", "competitionId"], unique = true)])
 data class Team(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
@@ -47,6 +47,23 @@ data class Team(
     val competitionId: Int
 )
 
+@Entity(tableName = "members", indices = [Index(value = ["teamName", "memberName"], unique = true)])
+data class Member(
+    @PrimaryKey(autoGenerate = true)
+    val id: Int = 0,
+
+    @ColumnInfo(name = "teamName")
+    val teamName: String,
+
+    @ColumnInfo(name = "memberName")
+    val memberName: String,
+
+    @ColumnInfo(name = "memberRole")
+    val memberRole: String,
+
+    @ColumnInfo(name = "memberImage")
+    val memberImage: String
+)
 
 @Entity(tableName = "users")
 data class User(

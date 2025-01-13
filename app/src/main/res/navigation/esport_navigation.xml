@@ -89,6 +89,9 @@
         <argument
             android:name="gameName"
             app:argType="string" />
+        <argument
+            android:name="competitionId"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/itemTeamDetail"

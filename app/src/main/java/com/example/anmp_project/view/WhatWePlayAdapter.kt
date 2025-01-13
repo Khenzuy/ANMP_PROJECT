@@ -59,6 +59,15 @@ class WhatWePlayAdapter(private val competitions: ArrayList<Competition>) :
             }
         }
 
+        holder.binding.btnTeam.setOnClickListener {
+            val action = WhatWePlayFragmentDirections.actionItemWhatWePlayToItemTeam(
+                competitionId = competition.id,
+                gamePhoto = competition.gamePhoto,
+                gameName = competition.gameName
+            )
+            holder.itemView.findNavController().navigate(action)
+        }
+
         // Fetch achievements related to this competition
 //        val achievements = fetchAchievementsForCompetition(holder.binding.root.context, competition.id)
 //        val achievementStrings = achievements.map { achievement ->
