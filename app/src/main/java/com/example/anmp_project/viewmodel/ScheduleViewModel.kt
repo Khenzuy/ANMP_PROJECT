@@ -1,28 +1,47 @@
-//package com.example.anmp_project.viewmodel
-//
-//import android.content.Context
-//import androidx.lifecycle.LiveData
-//import androidx.lifecycle.ViewModel
-//import androidx.lifecycle.viewModelScope
-//import com.example.anmp_project.model.Schedule
-//import com.example.anmp_project.model.ScheduleDatabase
-//import com.google.gson.Gson
-//import com.google.gson.reflect.TypeToken
-//import kotlinx.coroutines.Dispatchers
-//import kotlinx.coroutines.launch
-//
-//class ScheduleViewModel(private val database: ScheduleDatabase) : ViewModel() {
-//
-//    val schedules: LiveData<List<Schedule>> = database.scheduleDao().getAllSchedules()
-//
-//    fun fetchSchedules(context: Context) {
-//        viewModelScope.launch(Dispatchers.IO) {
-//            val jsonString = ScheduleDatabase.loadJsonFromAsset("data.json", context)
-//            val gson = Gson()
-//            val typeToken = object : TypeToken<List<Schedule>>() {}.type
-//            val schedulesList: List<Schedule> = gson.fromJson(jsonString, typeToken)
-//
-//            database.scheduleDao().insertAll(schedulesList)
-//        }
-//    }
-//}
+package com.example.anmp_project.viewmodel
+
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
+import com.example.anmp_project.model.Schedule
+import com.example.anmp_project.model.EsportsDatabase
+import com.google.gson.Gson
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+
+class ScheduleViewModel(application: Application) : AndroidViewModel(application) {
+    private val db = EsportsDatabase.getDatabase(application, viewModelScope)
+    private val gson = Gson()
+    val schedulesLD: LiveData<List<Schedule>> = db.scheduleDao().getAllSchedules()
+
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean> get() = _isLoading
+
+    private val _errorState = MutableLiveData<Boolean>()
+    val errorState: LiveData<Boolean> get() = _errorState
+
+    init {
+        refresh()
+    }
+
+    fun refresh() {
+        _isLoading.value = true
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val schedules = db.scheduleDao().getAllSchedules().value
+                _errorState.postValue(false)
+                schedules?.let {
+                    viewModelScope.launch(Dispatchers.Main) {
+                        (schedulesLD as MutableLiveData<List<Schedule>>).postValue(it)
+                    }
+                }
+            } catch (exception: Exception) {
+                _errorState.postValue(true)
+            } finally {
+                _isLoading.postValue(false)
+            }
+        }
+    }
+}
