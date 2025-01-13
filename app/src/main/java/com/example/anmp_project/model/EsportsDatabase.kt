@@ -19,7 +19,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.io.IOException
 
-@Database(entities = [User::class, Competition::class, Achievement::class, Proposal::class, Team::class, Member::class], version = 1, exportSchema = false)
+@Database(entities = [User::class, Competition::class, Achievement::class, Proposal::class, Team::class, Member::class, Schedule::class], version = 1, exportSchema = false)
 abstract class EsportsDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
     abstract fun competitionDao(): CompetitionDao
@@ -27,6 +27,7 @@ abstract class EsportsDatabase : RoomDatabase() {
     abstract fun proposalDao(): ProposalDao
     abstract fun teamDao(): TeamDao
     abstract fun memberDao(): MemberDao
+    abstract fun  scheduleDao(): ScheduleDao
 
     companion object {
         @Volatile
@@ -66,6 +67,23 @@ abstract class EsportsDatabase : RoomDatabase() {
             val gson = Gson()
             val typeToken = object : TypeToken<CompetitionsWrapper>() {}.type
             val competitionsWrapper: CompetitionsWrapper = gson.fromJson(jsonString, typeToken)
+
+            val schedulesWrapperType = object : TypeToken<SchedulesWrapper>() {}.type
+            val schedulesWrapper: SchedulesWrapper = gson.fromJson(jsonString, schedulesWrapperType)
+            schedulesWrapper.schedules.forEach { sched ->
+                val schedule = Schedule(
+                    day = sched.date.day,
+                    month = sched.date.month,
+                    year = sched.date.year,
+                    eventName = sched.eventName,
+                    esportTeam = sched.esportTeam,
+                    eventPhoto = sched.eventPhoto,
+                    eventTime = sched.eventTime,
+                    venue = sched.venue,
+                    eventDescription = sched.eventDescription
+                )
+                database.scheduleDao().insertAll(listOf(schedule))
+            }
 
             competitionsWrapper.competitions.forEach { comp ->
                 val competition = Competition(
@@ -204,9 +222,9 @@ abstract class EsportsDatabase : RoomDatabase() {
                     Member(teamName = "Fortnite Team C", memberName = "Fortnite C 3", memberRole = "Fortnite Role 3", memberImage = "path_to_image_2"),
                     Member(teamName = "Fortnite Team C", memberName = "Fortnite C 4", memberRole = "Fortnite Role 4", memberImage = "path_to_image_1"),
                 )
-
                 database.memberDao().insertMembers(membersList)
             }
+
         }
 
 

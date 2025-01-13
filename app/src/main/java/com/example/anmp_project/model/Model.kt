@@ -153,8 +153,14 @@ data class Schedule(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
 
-    @Embedded
-    val date: EventDate,
+    @ColumnInfo(name = "day")
+    val day: Int,
+
+    @ColumnInfo(name = "month")
+    val month: String,
+
+    @ColumnInfo(name = "year")
+    val year: Int,
 
     @ColumnInfo(name = "event_name")
     val eventName: String,
@@ -175,6 +181,33 @@ data class Schedule(
     val eventDescription: String
 )
 
+data class ScheduleJson(
+    @SerializedName("date")
+    val date: EventDate,
+
+    @SerializedName("event_name")
+    val eventName: String,
+
+    @SerializedName("esport_team")
+    val esportTeam: String,
+
+    @SerializedName("event_photo")
+    val eventPhoto: String,
+
+    @SerializedName("event_time")
+    val eventTime: String,
+
+    @SerializedName("venue")
+    val venue: String,
+
+    @SerializedName("event_description")
+    val eventDescription: String
+)
+
+data class SchedulesWrapper(
+    @SerializedName("schedule")
+    val schedules: List<ScheduleJson>
+)
 data class EventDate(
     @ColumnInfo(name = "day")
     val day: Int,
