@@ -12,66 +12,82 @@
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Apply Team"
             android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="20dp" />
+
+        <TextView
+            android:id="@+id/textViewChooseGame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Choose Game"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp" />
 
         <Spinner
             android:id="@+id/spinnerGame"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/textViewChooseGame"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="10dp" />
+
+        <TextView
+            android:id="@+id/textViewChooseTeam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Choose Team"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@+id/spinnerGame"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp" />
 
         <Spinner
             android:id="@+id/spinnerTeam"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/spinnerGame"
+            app:layout_constraintTop_toBottomOf="@+id/textViewChooseTeam"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="10dp" />
 
         <EditText
             android:id="@+id/editTextTextMultiLine3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:hint="Tell us the reason why you are good enough to join this team"
             android:inputType="textMultiLine"
+            android:gravity="top"
+            android:minHeight="120dp"
             app:layout_constraintTop_toBottomOf="@+id/spinnerTeam"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="20dp" />
 
         <Button
             android:id="@+id/buttonSubmit"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Submit"
+            android:text="Apply Team"
             app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine3"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="20dp"/>
-
-        <EditText
-            android:id="@+id/editTextText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="text"
-            android:text="Name"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="20dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
