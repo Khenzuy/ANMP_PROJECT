@@ -9,19 +9,22 @@ import com.example.anmp_project.model.EsportsDatabase
 import com.example.anmp_project.model.Proposal
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class ApplyTeamListViewModel(application: Application) : AndroidViewModel(application) {
 
     private val database = EsportsDatabase.getDatabase(application, viewModelScope)
-    var proposals: LiveData<List<Proposal>> = MutableLiveData()
+    private val _proposals = MutableLiveData<List<Proposal>>()
+    val proposals: LiveData<List<Proposal>> get() = _proposals
 
     fun refresh(username: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            proposals = database.proposalDao().getProposalsByUsername(username)
+            try {
+                val proposalList = database.proposalDao().getProposalsByUsernameSync(username)
+                _proposals.postValue(proposalList)
+            } catch (e: Exception) {
+                e.printStackTrace()
+                _proposals.postValue(emptyList())
+            }
         }
     }
 }
-
-
-

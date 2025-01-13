@@ -24,9 +24,7 @@ class AchievementAdapter(private val originalItems: List<Achievement>) :
         val achievement = displayedItems[position]
         val numberedAchievement = "${position + 1}. ${achievement.achievement} - ${achievement.teamName} (${achievement.year})"
         holder.binding.txtAchievement.text = numberedAchievement
-
     }
-
 
     override fun getItemCount(): Int {
         return displayedItems.size
@@ -35,7 +33,5 @@ class AchievementAdapter(private val originalItems: List<Achievement>) :
     fun updateDisplayedItems(newItems: List<Achievement>) {
         displayedItems = newItems
         notifyDataSetChanged()
-
     }
-
 }

@@ -13,7 +13,4 @@ interface CompetitionDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertCompetition(competition: Competition)
-
-    @Query("DELETE FROM competitions")
-    fun deleteAll()
 }

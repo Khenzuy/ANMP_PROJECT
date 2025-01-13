@@ -19,10 +19,17 @@ class ApplyTeamListFragment : Fragment() {
     private lateinit var binding: FragmentApplyTeamListBinding
     private lateinit var viewModel: ApplyTeamListViewModel
     private lateinit var applyTeamListAdapter: ApplyTeamListAdapter
+
     private fun getUsernameFromPreferences(): String {
-        return requireContext().getSharedPreferences("UserSession", Context.MODE_PRIVATE).getString("username", "") ?: ""
+        return requireContext().getSharedPreferences("UserSession", Context.MODE_PRIVATE)
+            .getString("username", "") ?: ""
     }
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         binding = FragmentApplyTeamListBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -50,13 +57,14 @@ class ApplyTeamListFragment : Fragment() {
         binding.floatingActionButton.setOnClickListener {
             navigateToSubmitFragment()
         }
-
-        viewModel.refresh(getUsernameFromPreferences())
     }
 
-    private fun navigateToSubmitFragment() {
+    override fun onResume() {
+        super.onResume()
         viewModel.refresh(getUsernameFromPreferences())
+    }
+    
+    private fun navigateToSubmitFragment() {
         findNavController().navigate(R.id.action_applyTeamListFragment_to_applyTeamSubmitFragment)
     }
 }
-

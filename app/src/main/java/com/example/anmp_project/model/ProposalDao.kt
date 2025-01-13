@@ -9,8 +9,8 @@ interface ProposalDao {
     fun insertProposal(proposal: Proposal)
 
     @Query("SELECT * FROM proposal WHERE username = :username")
-    fun getProposalsByUsername(username: String): LiveData<List<Proposal>>
+    fun getProposalsByUsernameSync(username: String): List<Proposal>
 
-    @Query("DELETE FROM proposal WHERE id = :proposalId")
-    fun deleteProposal(proposalId: Int)
+    @Query("SELECT * FROM proposal WHERE username = :username")
+    fun getProposalsByUsername(username: String): LiveData<List<Proposal>>
 }

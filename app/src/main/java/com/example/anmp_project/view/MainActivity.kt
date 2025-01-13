@@ -52,7 +52,9 @@ class MainActivity : AppCompatActivity() {
         binding.navView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.nav_apply_team -> {
+                    navController.popBackStack(R.id.applyTeamListFragment, true)
                     navController.navigate(R.id.applyTeamListFragment)
+                    binding.drawerLayout.closeDrawer(GravityCompat.START)
                     true
                 }
                 R.id.nav_logout -> {
