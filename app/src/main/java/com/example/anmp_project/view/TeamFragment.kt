@@ -58,6 +58,3 @@ class TeamFragment : Fragment() {
         }
     }
 }
-
-
-

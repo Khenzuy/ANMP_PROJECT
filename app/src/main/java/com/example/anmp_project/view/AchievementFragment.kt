@@ -38,7 +38,6 @@ class AchievementFragment : Fragment() {
             Picasso.get().load(image).into(binding.imageView)
             binding.txtGameName.text = nameGame
 
-            // Parse achievements from arguments
             originalAchievements = teamAchievements.joinToString().split(", ").mapNotNull { str ->
                 val parts = str.split(";")
                 if (parts.size >= 3) {
@@ -51,7 +50,6 @@ class AchievementFragment : Fragment() {
                     )
                 } else null
             }
-
             setupRecyclerView()
             setupYearSpinner()
         }

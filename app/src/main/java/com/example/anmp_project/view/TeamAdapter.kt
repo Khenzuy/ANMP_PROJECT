@@ -38,4 +38,3 @@ class TeamAdapter(private var teamList: List<Team>, private val gamePhoto: Strin
         notifyDataSetChanged()
     }
 }
-

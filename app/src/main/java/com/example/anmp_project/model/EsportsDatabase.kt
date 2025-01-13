@@ -19,7 +19,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.io.IOException
 
-@Database(entities = [User::class, Competition::class, Achievement::class, Proposal::class, Team::class, Member::class], version = 1)
+@Database(entities = [User::class, Competition::class, Achievement::class, Proposal::class, Team::class, Member::class], version = 1, exportSchema = false)
 abstract class EsportsDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
     abstract fun competitionDao(): CompetitionDao

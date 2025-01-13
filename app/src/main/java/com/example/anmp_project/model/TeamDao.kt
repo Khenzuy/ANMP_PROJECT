@@ -12,9 +12,6 @@ interface TeamDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertTeams(teams: List<Team>)
 
-    @Delete
-    fun deleteTeam(team: Team)
-
     @Query("SELECT t.* FROM teams t JOIN competitions c ON t.competitionId = c.id WHERE c.game_name = :gameName")
     fun getTeamsByGameName(gameName: String): LiveData<List<Team>>
 }
