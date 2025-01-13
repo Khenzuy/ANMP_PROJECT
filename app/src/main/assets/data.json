@@ -144,5 +144,72 @@
         }
       ]
     }
+  ],
+  "schedule": [
+    {
+      "date": {
+        "day": 12,
+        "month": "November",
+        "year": 2024
+      },
+      "event_name": "Mobile Legends Championship",
+      "esport_team": "ML-Team A",
+      "event_photo": "https://cdn.oneesports.id/cdn-data/sites/2/2024/10/459941854_1751994335348370_2056255222645612742_n-2.jpg",
+      "event_time": "03:00 PM",
+      "venue": "Champions Arena, Global City",
+      "event_description": "A thrilling championship event where the best Mobile Legends teams from around the world compete for the top prize."
+    },
+    {
+      "date": {
+        "day": 25,
+        "month": "November",
+        "year": 2024
+      },
+      "event_name": "Mobile Legends Strategy Workshop",
+      "esport_team": "ML-Team B",
+      "event_photo": "https://hybrid.co.id/wp-content/uploads/2023/06/6f24b178225babb84c68ff778de9b58e_Photo-1.jpg",
+      "event_time": "11:00 AM",
+      "venue": "Esports Hub, Uptown",
+      "event_description": "A workshop designed for players to learn advanced strategies and tactics from seasoned Mobile Legends professionals."
+    },
+    {
+      "date": {
+        "day": 10,
+        "month": "December",
+        "year": 2024
+      },
+      "event_name": "Fortnite Cup",
+      "esport_team": "Fortnite-Team A",
+      "event_photo": "https://i0.wp.com/thebusinessofesports.com/wp-content/uploads/2022/06/fortnite-cup-2019_featured.jpg",
+      "event_time": "05:00 PM",
+      "venue": "Holiday Arena, Festive City",
+      "event_description": "A holiday-themed Fortnite tournament with special challenges and prizes."
+    },
+    {
+      "date": {
+        "day": 15,
+        "month": "December",
+        "year": 2024
+      },
+      "event_name": "Dota 2 Community Event",
+      "esport_team": "Dota 2-Team C",
+      "event_photo": "https://cdn.sanity.io/images/6znhzi10/production/e6344fb0fe90d0ff2d6a93e7a84803830acadf93-1920x1280.jpg",
+      "event_time": "01:00 PM",
+      "venue": "Dota 2 Lounge, Gamer's Paradise",
+      "event_description": "Join the community for a day of fun, games, and prizes featuring Dota 2 activities."
+    },
+    {
+      "date": {
+        "day": 20,
+        "month": "December",
+        "year": 2024
+      },
+      "event_name": "Call of Duty End of Year Tournament",
+      "esport_team": "COD-Team B",
+      "event_photo": "https://i.ytimg.com/vi/4OXCMvFYttQ/maxresdefault.jpg",
+      "event_time": "04:00 PM",
+      "venue": "Battle Arena, Gaming District",
+      "event_description": "Compete in the final Call of Duty tournament of the year, with exciting prizes and glory on the line."
+    }
   ]
 }

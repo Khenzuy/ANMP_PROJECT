@@ -149,7 +149,11 @@ data class CompetitionJson(
     val teamAchievements: List<TeamAchievement>
 )
 
+@Entity(tableName = "schedules")
 data class Schedule(
+    @PrimaryKey(autoGenerate = true)
+    val id: Int = 0,
+
     @Embedded
     val date: EventDate,
 
