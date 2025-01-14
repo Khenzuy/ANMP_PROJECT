@@ -49,7 +49,10 @@ class SignInActivity : AppCompatActivity() {
     private fun setupObservers() {
         signInViewModel.loginResult.observe(this) { isSuccess ->
             if (isSuccess) {
-                saveSession(signInViewModel.user.value?.username ?: "")
+                val user = signInViewModel.user.value
+                user?.let {
+                    saveSession(it.username, it.firstName, it.lastName, it.profileImage)
+                }
                 Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
                 navigateToMainActivity()
             } else {
@@ -65,13 +68,15 @@ class SignInActivity : AppCompatActivity() {
         }
     }
 
-    private fun saveSession(username: String) {
+    private fun saveSession(username: String, firstName: String, lastName: String, profileImage: String) {
         val editor = sharedPreferences.edit()
         editor.putString("username", username)
+        editor.putString("first_name", firstName)
+        editor.putString("last_name", lastName)
+        editor.putString("profile_image", profileImage)
         editor.putBoolean("isLoggedIn", true)
         editor.apply()
     }
-
 
     private fun navigateToMainActivity() {
         val intent = Intent(this, MainActivity::class.java)
