@@ -24,7 +24,6 @@ class SignInActivity : AppCompatActivity() {
 
         sharedPreferences = getSharedPreferences("UserSession", MODE_PRIVATE)
 
-        // Using EsportsDatabase to get the userDao
         val userDao = EsportsDatabase.getDatabase(this, CoroutineScope(Dispatchers.Main)).userDao()
         signInViewModel = SignInViewModel(userDao)
 

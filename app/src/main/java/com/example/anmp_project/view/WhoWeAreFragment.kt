@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.example.anmp_project.databinding.FragmentWhoWeAreBinding
 import com.example.anmp_project.viewmodel.WhoWeAreViewModel
-import com.squareup.picasso.Picasso
 
 class WhoWeAreFragment : Fragment() {
     private lateinit var binding: FragmentWhoWeAreBinding
@@ -21,6 +20,7 @@ class WhoWeAreFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentWhoWeAreBinding.inflate(inflater, container, false)
+        binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
     }
 
@@ -28,6 +28,7 @@ class WhoWeAreFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel = ViewModelProvider(this).get(WhoWeAreViewModel::class.java)
+        binding.viewModel = viewModel
 
         val sharedPreferences = requireActivity().getSharedPreferences("UserSession", Context.MODE_PRIVATE)
         username = sharedPreferences.getString("username", null) ?: ""
@@ -35,14 +36,7 @@ class WhoWeAreFragment : Fragment() {
         if (username.isNotEmpty()) {
             viewModel.getUserData(username).observe(viewLifecycleOwner) { user ->
                 user?.let {
-                    binding.txtTeamDescription.text = it.teamDescription
-                    binding.btnLike.text = it.likeCount.toString()
-
-                    Picasso.get()
-                        .load(it.profileImage)
-                        .placeholder(android.R.drawable.ic_menu_gallery)
-                        .error(android.R.drawable.ic_menu_close_clear_cancel)
-                        .into(binding.imageView)
+                    binding.user = it
                 }
             }
 
